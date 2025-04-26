@@ -43,32 +43,20 @@ class GfG {
 
 class Solution {
     public int count(int coins[], int sum) {
-        // code here.
         int n = coins.length;
-        //int[][] dp = new int[n+1][sum+1]; 
         
         int[] dp = new int[sum+1];
         dp[0] = 1;
         
-        int prevArr[] = new int[sum+1];
-        prevArr[0] = 1;
-        
+       
         for(int c=1;c<=n;c++){
-            prevArr = dp;
             for(int s=1;s<=sum;s++){
                 int coinValue = coins[c-1];
-                dp[s] = prevArr[s];
                 if(s-coinValue >=0){
                     dp[s] += dp[s-coinValue];
-                    //System.out.print(dp[c][s-coinValue]);
                 }
-             
             }
-            
-            
-            //System.out.println();
         }
-        
-        return dp[sum];
+        return dp[sum]; 
     }
 }
